@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Timeline</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <form style="text-align:center;margin:50px 0">
+    <label for="name">Name:</label>
+    <input type="text" id="name"/>
+    <label for="message">Message:</label>
+    <input type="text" id="message"/>
+    <button type="submit">Send</button>
+  </form>
+  <fieldset style="padding: 20px;width:50%;margin:0 auto">
+    <legend style="text-align:center">Timeline</legend>
+    <p id="messages"></p>
+  </fieldset>
+  <script>
+    (function() {
+    var socket = io();
+    var form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = e.target.querySelector('#name');
+        var message = e.target.querySelector('#message');
+        var data = {
+        name: name.value,
+        message: message.value
+        };
+        socket.emit('/messages', data);
+        e.target.reset();
+    });
+    socket.on('/messages', function(data) {
+        var messages = document.querySelector('#messages');
+        var message = '<b>'+ data.name +':</b> '+ data.message +'<br />';
+        messages.innerHTML += message;
+    });
+    })();
+  </script>
+</body>
+</html>

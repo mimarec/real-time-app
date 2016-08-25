@@ -1,0 +1,29 @@
+{
+  "name": "real-time-app",
+  "version": "1.0.0",
+  "description": "Real-time application using Node.js and RethinkDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mimarec/real-time-app.git"
+  },
+  "keywords": [
+    "node",
+    "rethinkdb",
+    "real-time"
+  ],
+  "author": "Miguel María Martínez Echeverría",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mimarec/real-time-app/issues"
+  },
+  "homepage": "https://github.com/mimarec/real-time-app#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "rethinkdb": "^2.3.2",
+    "socket.io": "^1.4.8"
+  }
+}
